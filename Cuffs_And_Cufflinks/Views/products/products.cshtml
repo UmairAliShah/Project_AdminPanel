@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Cuffs_And_Cufflinks.Models.Table_products>
+@{
+    ViewBag.Title = "products";
+    
+   
+}
+
+<!--breadcrumbs-->
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+           
+            <li><a href="@Url.Action("Index", "Home")"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="active">Products</li>
+        </ol>
+    </div>
+</div>
+<!--//breadcrumbs-->
+<!--products-->
+<div class="products">
+    <div class="container">
+        <div class="col-md-12 ">
+@if (ViewBag.Message == "Shirts")
+{
+    foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="product-grids simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".5s">
+                <div class="new-top">
+
+                    <a href="@Url.Action("products_detail", "products", new { id = item.p_id, val = item.category_id }, null)"><img src="@(System.Configuration.ConfigurationManager.AppSettings["adminURL"] + item.p_img.Substring(1, item.p_img.Length-1))" class="img-responsive" alt="" /></a>
+                    <div class="new-text">
+                        <ul>
+                            <li>
+                                @Html.ActionLink("Quick View", "products_detail", "products", new { id = item.p_id, val = item.category_id}, null)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="new-bottom">
+                    <h5>@item.p_title </h5>
+
+                    <div class="ofr">
+
+                        <p><span class="item_price">$@item.p_price</span></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+
+
+}
+else if (ViewBag.Message == "Pents")
+{
+
+    foreach (var item in Model)
+    {
+
+                  <div class="col-md-4">
+            <div class="product-grids simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".5s">
+                <div class="new-top">
+
+                    <a href="@Url.Action("products_detail", "products", new { id = item.p_id, val = item.category_id }, null)"><img src="@(System.Configuration.ConfigurationManager.AppSettings["adminURL"] + item.p_img.Substring(1, item.p_img.Length-1))" class="img-responsive" alt="" /></a>
+                    <div class="new-text">
+                        <ul>
+                            <li>
+                                @Html.ActionLink("Quick View", "products_detail", "products", new { id = item.p_id, val = item.category_id }, null)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="new-bottom">
+                    <h5>Girl Dress </h5>
+
+                    <div class="ofr">
+
+                        <p><span class="item_price">$@item.p_price</span></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                
+      }
+            
+            
+            
+}
+            
+
+
+
+           
+
+        </div>
+        <div class="col-md-3 rsidebar">
+
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+       
+</div>
+<!--//products-->

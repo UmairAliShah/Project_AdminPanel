@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8e1f4ce26e1b452a9d5db283bf59b7b6" Name="Diagram1">
+        <EntityTypeShape EntityType="Cuff_And_Cufflinks_DBModel.Table_Registeration" Width="1.5" PointX="1" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cuff_And_Cufflinks_DBModel.Table_Category" Width="1.5" PointX="2.75" PointY="3" />
+        <EntityTypeShape EntityType="Cuff_And_Cufflinks_DBModel.Table_Colors" Width="1.5" PointX="5" PointY="4.375" />
+        <EntityTypeShape EntityType="Cuff_And_Cufflinks_DBModel.Table_products" Width="1.5" PointX="7.25" PointY="2.375" />
+        <EntityTypeShape EntityType="Cuff_And_Cufflinks_DBModel.Table_Size" Width="1.5" PointX="5" PointY="1.625" />
+        <AssociationConnector Association="Cuff_And_Cufflinks_DBModel.FK_Table_Colors_Table_Category" />
+        <AssociationConnector Association="Cuff_And_Cufflinks_DBModel.FK_Table_products_Table_Category" />
+        <AssociationConnector Association="Cuff_And_Cufflinks_DBModel.FK_Table_Size_Table_Category" />
+        <AssociationConnector Association="Cuff_And_Cufflinks_DBModel.FK_Table_products_Table_Colors" />
+        <AssociationConnector Association="Cuff_And_Cufflinks_DBModel.FK_Table_products_Table_Size" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

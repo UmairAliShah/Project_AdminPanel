@@ -1,0 +1,116 @@
+﻿@using Cuffs_And_Cufflinks.Controllers
+@{
+    ViewBag.Title = "checkout";
+}
+
+
+<!--breadcrumbs-->
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+            <li><a href="@Url.Action("Index", "Home")"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="active">Add To Cart</li>
+        </ol>
+    </div>
+</div>
+<!--//breadcrumbs-->
+
+@{
+    
+    decimal sum = 0;
+}
+
+<div class="cart-items">
+    <div class="container">
+        <h3 class="wow fadeInUp animated" data-wow-delay=".5s">My Shopping Cart</h3>
+       
+       @if (ViewBag.message == "empty")
+       { 
+             <h1>Your Cart Is Empty</h1>
+       }
+       else if (ViewBag.message == "non-empty")
+       { 
+            
+            foreach (Item items in (List<Item>)Session["cart"])
+            {
+                sum = sum + Convert.ToDecimal(items.Products.p_price * items.Quantity);
+              <div class="cart-header wow fadeInUp animated" data-wow-delay=".5s">
+                  
+                   <div class="cart-sec simpleCart_shelfItem">
+                  <div class="cart-item cyc">
+                      <img src="@(System.Configuration.ConfigurationManager.AppSettings["adminURL"] + items.Products.p_img.Substring(1, items.Products.p_img.Length-1))" class="img-responsive" alt="">
+                  </div>
+                  <div class="cart-item-info">
+                    
+                      <h1>@items.Products.p_article_no</h1>
+                      <br>
+                      <h1>@items.Products.p_title</h1>
+                      <br/>
+                    <ul class="qty">
+                       
+                        <li><p>Size: @items.Size</p></li>
+                        <li><p>Color: @items.Color</p></li>
+                    </ul>
+                      <br/>
+                      <p>Quantity: @items.Quantity</p>
+                      <br>
+                      <p>Price: <b>@(items.Products.p_price * items.Quantity)</b></p>
+                    <div class="delivery">
+                       
+                        <span><a href="@Url.Action("Delete", "Shopping_Cart", new {id = items.Products.p_id })"><span class="label label-success" style="width:70px; height:30px; text-align:center">Remove</span></a></span>
+                        <div class="clearfix"></div>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+               </div>
+             </div>
+
+          }
+       
+          <h1 style="margin-left:794px"><b>Total Sum:</b> @sum</h1>
+       }
+      <div>
+         
+        
+          <br>
+        <a href="@Url.Action("Index", "Home")" style="float:right;  letter-spacing: 2px; width: 30%; background-color: transparent; border-color: #A5A3A3; font-size: 16px; padding: 8px 14px; color: #5A5757; border-radius: 0; text-transform: uppercase; font-weight: 600; display: inline-block; text-align: center; "  class="btn btn-default btn-lg">Continue Shopping</a>
+        <br><br>
+
+      @*  <a style="float:right; margin-left:350px; letter-spacing: 2px;     margin-top: 10px;  letter-spacing: 2px;
+          margin-top: 10px;
+         width: 30%; border-radius:0;
+         background: #40B313;
+         color: #fff;   width: 30%;" href="@Url.Action("checkout", "Shopping_Cart")" class="btn btn-default btn-lg">Continue to Checkout</a>*@
+
+
+          <input onclick="clicked();" id="checkcart" value="Continue to checkout" style="float:right; margin-left:350px; letter-spacing: 2px;     margin-top: 10px;  letter-spacing: 2px;
+          margin-top: 10px;
+         width: 30%; border-radius:0;
+         background: #40B313;
+         color: #fff;   width: 30%;"  class="btn btn-default btn-lg">
+
+      </div>
+
+        
+        <Script>
+            function clicked()
+            {
+
+                var value = '@ViewBag.message'
+                if (value == "empty") {
+                    alert("Your Cart is Empty");
+                    window.location.href = "/Home/Index";
+                }
+                else {
+
+                    window.location.href = "/Shopping_Cart/checkout";
+
+                }
+               
+            }
+        
+
+            </Script>
+       
+</div>
+</div>

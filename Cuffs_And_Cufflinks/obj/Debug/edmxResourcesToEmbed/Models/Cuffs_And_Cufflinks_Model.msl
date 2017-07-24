@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Cuff_And_Cufflinks_DBModelStoreContainer" CdmEntityContainer="Cuff_And_Cufflinks_DBEntities">
+    <EntitySetMapping Name="Table_Registeration">
+      <EntityTypeMapping TypeName="Cuff_And_Cufflinks_DBModel.Table_Registeration">
+        <MappingFragment StoreEntitySet="Table_Registeration">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="second_name" ColumnName="second_name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Category">
+      <EntityTypeMapping TypeName="Cuff_And_Cufflinks_DBModel.Table_Category">
+        <MappingFragment StoreEntitySet="Table_Category">
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Colors">
+      <EntityTypeMapping TypeName="Cuff_And_Cufflinks_DBModel.Table_Colors">
+        <MappingFragment StoreEntitySet="Table_Colors">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="c_id" ColumnName="c_id" />
+          <ScalarProperty Name="c_name" ColumnName="c_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_products">
+      <EntityTypeMapping TypeName="Cuff_And_Cufflinks_DBModel.Table_products">
+        <MappingFragment StoreEntitySet="Table_products">
+          <ScalarProperty Name="s_id" ColumnName="s_id" />
+          <ScalarProperty Name="c_id" ColumnName="c_id" />
+          <ScalarProperty Name="p_img" ColumnName="p_img" />
+          <ScalarProperty Name="p_description" ColumnName="p_description" />
+          <ScalarProperty Name="p_price" ColumnName="p_price" />
+          <ScalarProperty Name="p_article_no" ColumnName="p_article_no" />
+          <ScalarProperty Name="p_title" ColumnName="p_title" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="p_id" ColumnName="p_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Size">
+      <EntityTypeMapping TypeName="Cuff_And_Cufflinks_DBModel.Table_Size">
+        <MappingFragment StoreEntitySet="Table_Size">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="s_size" ColumnName="s_size" />
+          <ScalarProperty Name="s_id" ColumnName="s_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

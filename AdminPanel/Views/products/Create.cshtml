@@ -1,0 +1,99 @@
+﻿@model AdminPanel.Models.Table_products
+
+@{
+    ViewBag.Title = "Create";
+}
+
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <h2>Create</h2>
+
+
+@using (Html.BeginForm("Create", "products", FormMethod.Post, new { enctype = "multipart/form-data"})) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Table_products</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.category_id, "category_id", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("category_id", String.Empty)
+                @Html.ValidationMessageFor(model => model.category_id)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.p_title, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.p_title)
+                @Html.ValidationMessageFor(model => model.p_title)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.p_article_no, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.p_article_no)
+                @Html.ValidationMessageFor(model => model.p_article_no)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.p_price, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.p_price)
+                @Html.ValidationMessageFor(model => model.p_price)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.p_description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.p_description)
+                @Html.ValidationMessageFor(model => model.p_description)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.p_img, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="File" name="ImageFile" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.c_id, "c_id", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("c_id", String.Empty)
+                @Html.ValidationMessageFor(model => model.c_id)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.s_id, "s_id", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("s_id", String.Empty)
+               @Html.ValidationMessageFor(model => model.s_id)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

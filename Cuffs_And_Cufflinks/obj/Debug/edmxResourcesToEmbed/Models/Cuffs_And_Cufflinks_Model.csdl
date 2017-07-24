@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Cuff_And_Cufflinks_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Table_Registeration">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="second_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="Cuff_And_Cufflinks_DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Table_Registeration" EntityType="Self.Table_Registeration" />
+    <EntitySet Name="Table_Category" EntityType="Cuff_And_Cufflinks_DBModel.Table_Category" />
+    <EntitySet Name="Table_Colors" EntityType="Cuff_And_Cufflinks_DBModel.Table_Colors" />
+    <EntitySet Name="Table_products" EntityType="Cuff_And_Cufflinks_DBModel.Table_products" />
+    <EntitySet Name="Table_Size" EntityType="Cuff_And_Cufflinks_DBModel.Table_Size" />
+    <AssociationSet Name="FK_Table_Colors_Table_Category" Association="Cuff_And_Cufflinks_DBModel.FK_Table_Colors_Table_Category">
+      <End Role="Table_Category" EntitySet="Table_Category" />
+      <End Role="Table_Colors" EntitySet="Table_Colors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_products_Table_Category" Association="Cuff_And_Cufflinks_DBModel.FK_Table_products_Table_Category">
+      <End Role="Table_Category" EntitySet="Table_Category" />
+      <End Role="Table_products" EntitySet="Table_products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_Size_Table_Category" Association="Cuff_And_Cufflinks_DBModel.FK_Table_Size_Table_Category">
+      <End Role="Table_Category" EntitySet="Table_Category" />
+      <End Role="Table_Size" EntitySet="Table_Size" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_products_Table_Colors" Association="Cuff_And_Cufflinks_DBModel.FK_Table_products_Table_Colors">
+      <End Role="Table_Colors" EntitySet="Table_Colors" />
+      <End Role="Table_products" EntitySet="Table_products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_products_Table_Size" Association="Cuff_And_Cufflinks_DBModel.FK_Table_products_Table_Size">
+      <End Role="Table_Size" EntitySet="Table_Size" />
+      <End Role="Table_products" EntitySet="Table_products" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Table_Category">
+    <Key>
+      <PropertyRef Name="category_id" />
+    </Key>
+    <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Table_Colors" Relationship="Cuff_And_Cufflinks_DBModel.FK_Table_Colors_Table_Category" FromRole="Table_Category" ToRole="Table_Colors" />
+    <NavigationProperty Name="Table_products" Relationship="Cuff_And_Cufflinks_DBModel.FK_Table_products_Table_Category" FromRole="Table_Category" ToRole="Table_products" />
+    <NavigationProperty Name="Table_Size" Relationship="Cuff_And_Cufflinks_DBModel.FK_Table_Size_Table_Category" FromRole="Table_Category" ToRole="Table_Size" />
+  </EntityType>
+  <EntityType Name="Table_Colors">
+    <Key>
+      <PropertyRef Name="c_id" />
+    </Key>
+    <Property Name="c_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="c_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category_id" Type="Int32" />
+    <NavigationProperty Name="Table_Category" Relationship="Cuff_And_Cufflinks_DBModel.FK_Table_Colors_Table_Category" FromRole="Table_Colors" ToRole="Table_Category" />
+    <NavigationProperty Name="Table_products" Relationship="Cuff_And_Cufflinks_DBModel.FK_Table_products_Table_Colors" FromRole="Table_Colors" ToRole="Table_products" />
+  </EntityType>
+  <EntityType Name="Table_products">
+    <Key>
+      <PropertyRef Name="p_id" />
+    </Key>
+    <Property Name="p_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category_id" Type="Int32" />
+    <Property Name="p_title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p_article_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p_price" Type="Int32" />
+    <Property Name="p_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="p_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="c_id" Type="Int32" />
+    <Property Name="s_id" Type="Int32" />
+    <NavigationProperty Name="Table_Category" Relationship="Cuff_And_Cufflinks_DBModel.FK_Table_products_Table_Category" FromRole="Table_products" ToRole="Table_Category" />
+    <NavigationProperty Name="Table_Colors" Relationship="Cuff_And_Cufflinks_DBModel.FK_Table_products_Table_Colors" FromRole="Table_products" ToRole="Table_Colors" />
+    <NavigationProperty Name="Table_Size" Relationship="Cuff_And_Cufflinks_DBModel.FK_Table_products_Table_Size" FromRole="Table_products" ToRole="Table_Size" />
+  </EntityType>
+  <EntityType Name="Table_Size">
+    <Key>
+      <PropertyRef Name="s_id" />
+    </Key>
+    <Property Name="s_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="s_size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="category_id" Type="Int32" />
+    <NavigationProperty Name="Table_Category" Relationship="Cuff_And_Cufflinks_DBModel.FK_Table_Size_Table_Category" FromRole="Table_Size" ToRole="Table_Category" />
+    <NavigationProperty Name="Table_products" Relationship="Cuff_And_Cufflinks_DBModel.FK_Table_products_Table_Size" FromRole="Table_Size" ToRole="Table_products" />
+  </EntityType>
+  <Association Name="FK_Table_Colors_Table_Category">
+    <End Type="Cuff_And_Cufflinks_DBModel.Table_Category" Role="Table_Category" Multiplicity="0..1" />
+    <End Type="Cuff_And_Cufflinks_DBModel.Table_Colors" Role="Table_Colors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table_Category">
+        <PropertyRef Name="category_id" />
+      </Principal>
+      <Dependent Role="Table_Colors">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_products_Table_Category">
+    <End Type="Cuff_And_Cufflinks_DBModel.Table_Category" Role="Table_Category" Multiplicity="0..1" />
+    <End Type="Cuff_And_Cufflinks_DBModel.Table_products" Role="Table_products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table_Category">
+        <PropertyRef Name="category_id" />
+      </Principal>
+      <Dependent Role="Table_products">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_Size_Table_Category">
+    <End Type="Cuff_And_Cufflinks_DBModel.Table_Category" Role="Table_Category" Multiplicity="0..1" />
+    <End Type="Cuff_And_Cufflinks_DBModel.Table_Size" Role="Table_Size" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table_Category">
+        <PropertyRef Name="category_id" />
+      </Principal>
+      <Dependent Role="Table_Size">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_products_Table_Colors">
+    <End Type="Cuff_And_Cufflinks_DBModel.Table_Colors" Role="Table_Colors" Multiplicity="0..1" />
+    <End Type="Cuff_And_Cufflinks_DBModel.Table_products" Role="Table_products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table_Colors">
+        <PropertyRef Name="c_id" />
+      </Principal>
+      <Dependent Role="Table_products">
+        <PropertyRef Name="c_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_products_Table_Size">
+    <End Type="Cuff_And_Cufflinks_DBModel.Table_Size" Role="Table_Size" Multiplicity="0..1" />
+    <End Type="Cuff_And_Cufflinks_DBModel.Table_products" Role="Table_products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table_Size">
+        <PropertyRef Name="s_id" />
+      </Principal>
+      <Dependent Role="Table_products">
+        <PropertyRef Name="s_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

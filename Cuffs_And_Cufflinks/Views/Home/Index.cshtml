@@ -1,0 +1,161 @@
+﻿@model IEnumerable<Cuffs_And_Cufflinks.Models.Table_products>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="banner">
+    <div class="container">
+        <div class="banner-text">
+            <div class="col-sm-5 banner-left wow fadeInLeft animated" data-wow-delay=".5s">
+                <!--
+                    
+                <h2>On Entire Fashion range</h2>
+                <h3>Coming Soon </h3>
+                <h4>Our New Designs</h4>
+                <div class="count main-row">
+                    <ul id="example">
+                        <li><span class="hours">00</span><p class="hours_text">Hours</p></li>
+                        <li><span class="minutes">00</span><p class="minutes_text">Minutes</p></li>
+                        <li><span class="seconds">00</span><p class="seconds_text">Seconds</p></li>
+                    </ul>
+                    <div class="clearfix"> </div>
+                    <script type="text/javascript" src="~/Scripts/jquery.countdown.min.js"></script>
+                    <script type="text/javascript">
+                        $('#example').countdown({
+                            date: '12/24/2020 15:59:59',
+                            offset: -8,
+                            day: 'Day',
+                            days: 'Days'
+                        }, function () {
+                            alert('Done!');
+                        });
+                    </script>
+                </div>
+
+                -->
+              
+
+            </div>
+            <div class="col-sm-7 banner-right wow fadeInRight animated" data-wow-delay=".5s">
+                <section class="slider grid">
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <li>
+                                <h4>-30%</h4>
+                                <img src="~/images/b1.png" alt="">
+                            </li>
+                            <li>
+                                <h4>-25%</h4>
+                                <img src="~/images/b2.png" alt="">
+                            </li>
+                            <li>
+                                <h4>-32%</h4>
+                                <img src="~/images/b3.png" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <!--FlexSlider-->
+                <script defer src="~/Scripts/jquery.flexslider.js"></script>
+                <script type="text/javascript">
+                    $(window).load(function () {
+                        $('.flexslider').flexslider({
+                            animation: "pagination",
+                            start: function (slider) {
+                                $('body').removeClass('loading');
+                            }
+                        });
+                    });
+                </script>
+                <!--End-slider-script-->
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!--//banner-->
+<!--new-->
+
+<!--//new-->
+<!--gallery-->
+<div class="gallery">
+    <div class="container">
+        <div class="title-info wow fadeInUp animated" data-wow-delay=".5s">
+            <h3 class="title">Our <span>Products</span></h3>
+
+        </div>
+        @{
+            
+            int i = 0;
+            int j = 0;
+        }
+        <div class="gallery-info">
+
+            @foreach (var item in Model)
+            {
+               
+                if (item.category_id == ViewBag.Category_Shirt && i != 8 ) { 
+                
+                     <div class="col-md-3">
+                            <div class="gallery-grid wow flipInY animated" data-wow-delay=".5s">
+            
+                                 <a href="@Url.Action("products_detail", "products", new { id = item.p_id , val = item.category_id}, null)">
+                                     <img src="@(System.Configuration.ConfigurationManager.AppSettings["adminURL"] + item.p_img.Substring(1, item.p_img.Length-1))" class="img-responsive" alt="" />
+                                 </a >
+
+
+                           <div class="gallery-text simpleCart_shelfItem">
+                           <h5>@item.p_title</h5>
+                           <p><span class="item_price">@item.p_price Rs</span></p>
+                           <h4 class="sizes">Sizes: <a href="#"> s</a> - <a href="#">m</a> - <a href="#">l</a> - <a href="#">xl</a> </h4>
+
+                          </div>
+                          </div>
+                     </div>
+                    i++;
+                
+                }
+                
+                 
+            }
+            @foreach (var item in Model)
+            {
+                if (item.category_id == ViewBag.Category_Pent && j != 8)
+                {
+
+                    <div class="col-md-3">
+                        <div class="gallery-grid wow flipInY animated" data-wow-delay=".5s">
+
+                            <a href="@Url.Action("products_detail", "products", new { id = item.p_id, val = item.category_id }, null)">
+                                <img src="@(System.Configuration.ConfigurationManager.AppSettings["adminURL"] + item.p_img.Substring(1, item.p_img.Length-1))" class="img-responsive" alt="" />
+                            </a>
+
+
+                            <div class="gallery-text simpleCart_shelfItem">
+                                <h5>@item.p_title </h5>
+                                <p><span class="item_price">@item.p_price Rs</span></p>
+                                <h4 class="sizes">Sizes: <a href="#"> s</a> - <a href="#">m</a> - <a href="#">l</a> - <a href="#">xl</a> </h4>
+
+                            </div>
+                        </div>
+                    </div>
+                    j++;
+
+
+                }
+
+
+            }
+
+
+          
+        
+                
+           
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!--//gallery-->
+<!--trend-->

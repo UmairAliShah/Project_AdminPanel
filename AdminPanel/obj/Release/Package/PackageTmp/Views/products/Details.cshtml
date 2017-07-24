@@ -1,0 +1,82 @@
+﻿@model AdminPanel.Models.Table_products
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Table_products</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.p_title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_article_no)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_article_no)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Table_Category.category_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Table_Category.category_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Table_Colors.c_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Table_Colors.c_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Table_Size.s_size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Table_Size.s_size)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.p_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,60 @@
+﻿@model Cuffs_And_Cufflinks.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+<!--//header-->
+<!--breadcrumbs-->
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow fadeInUp" data-wow-delay=".5s">
+            <li><a href="@Url.Action("Index", "Home")"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="active">Sign In</li>
+        </ol>
+    </div>
+</div>
+<!--//breadcrumbs-->
+<!--login-->
+<div class="login-page">
+    <div class="title-info wow fadeInUp animated" data-wow-delay=".5s">
+        <h3 class="title">SignIn<span> Form</span></h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit curabitur </p>
+    </div>
+    <div class="widget-shadow">
+        <div class="login-top wow fadeInUp animated" data-wow-delay=".7s">
+            <h4>Welcome back to Modern Shoppe ! <br> Not a Member? <a href="@Url.Action("Register", "Account")">  Register Now »</a> </h4>
+        </div>
+        <div class="login-body wow fadeInUp animated" data-wow-delay=".7s">
+
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+            {
+                
+                @Html.AntiForgeryToken()
+
+                @Html.TextBoxFor(model => model.Email, new { @class = "user", @name = "email", @placeholder = "Enter your Email", required="" }) <br />
+                @Html.ValidationMessage("Email") <br />
+                @Html.PasswordFor(model => model.Password, new { @class = "lock", @name = "password", @placeholder = "Password", required = "" })  <br />
+                @Html.ValidationMessage("Password") <br />
+                <input type="submit" name="Sign In" value="Sign In">
+                <div class="forgot-grid">
+                    <label class="checkbox">@Html.CheckBoxFor(model => model.RememberMe)
+                                            @Html.LabelFor(model => model.RememberMe)</label>
+                    <div class="forgot">
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+</div>
+<!--//login-->
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

@@ -1,0 +1,49 @@
+﻿@model Cuffs_And_Cufflinks.Models.RegisterViewModel
+@{
+    ViewBag.Title = "register";
+}
+<!--breadcrumbs-->
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+            <li><a href="@Url.Action("Index", "Home")"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="active">Register</li>
+        </ol>
+    </div>
+</div>
+<!--//breadcrumbs-->
+<!--login-->
+<div class="login-page">
+    <div class="title-info wow fadeInUp animated" data-wow-delay=".5s">
+        <h3 class="title">Register<span> Form</span></h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit curabitur </p>
+    </div>
+    <div class="widget-shadow">
+        <div class="login-top wow fadeInUp animated" data-wow-delay=".7s">
+            <h4>Already have an Account ?<a href="@Url.Action("Login", "Account")">  Sign In »</a> </h4>
+        </div>
+        <div class="login-body">
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "wow fadeInUp animated  data-wow-delay=.7s", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                
+                @Html.TextBoxFor(m => m.UserName, new { @placeholder = "User Name", required = "" }) <br />
+                @Html.ValidationMessage("UserName") <br />
+                @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email", required = "" })<br />
+                @Html.ValidationMessage("Email") <br />
+                @Html.PasswordFor(m => m.Password, new { @placeholder = "Password", @class = "lock", required = "" })  <br />
+                @Html.ValidationMessage("Password") <br />
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = "Confirm Password", @class = "lock", required = "" })<br />
+                @Html.ValidationMessage("ConfirmPassword") <br />
+                <input type="submit" name="Register" value="Register">
+
+
+            }
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

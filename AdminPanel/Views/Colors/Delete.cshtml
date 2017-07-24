@@ -1,0 +1,40 @@
+﻿@model AdminPanel.Models.Table_Colors
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Table_Colors</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.c_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.c_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Table_Category.category_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Table_Category.category_name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

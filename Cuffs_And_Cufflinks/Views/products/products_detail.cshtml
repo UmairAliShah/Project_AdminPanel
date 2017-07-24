@@ -1,0 +1,151 @@
+﻿@model Cuffs_And_Cufflinks.Models.Table_products
+@{
+    ViewBag.Title = "products_detail";
+}
+@{
+    
+    
+    
+    ViewBag.qty = new int[10] {1,2,3,4,5,6,7,8,9,10 };
+    
+}
+<!--breadcrumbs-->
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+            <li><a href="@Url.Action("Index", "Home")"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="active">Single page</li>
+        </ol>
+    </div>
+</div>
+<!--//breadcrumbs-->
+<!--single-page-->
+<div class="single">
+    <div class="container">
+        @using (Html.BeginForm("OrderNow", "Shopping_Cart", FormMethod.Post))
+        {
+        
+                @Html.HiddenFor(model => model.category_id)
+                @Html.HiddenFor(model => model.p_id)
+                
+                @Html.HiddenFor(model => model.p_article_no)
+                @Html.HiddenFor(model => model.p_title)
+                @Html.HiddenFor(model => model.p_price)
+                @Html.HiddenFor(model => model.p_description)
+                @Html.HiddenFor(model => model.p_img)
+               
+        <div class="single-info">
+            <div class="col-md-6 single-top wow fadeInLeft animated" data-wow-delay=".5s">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li data-thumb="../images/s1.jpg">
+                            <div class="thumb-image"> <img src="../images/s1.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
+                        </li>
+                        <li data-thumb="../images/s2.jpg">
+                            <div class="thumb-image"> <img src="../images/s2.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
+                        </li>
+                        <li data-thumb="../images/s3.jpg">
+                            <div class="thumb-image"> <img src="../images/s3.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-md-6 single-top-left simpleCart_shelfItem wow fadeInRight animated" data-wow-delay=".5s">
+                <h1>@Model.p_article_no</h1>
+                
+                <br>
+                <h3>@Model.p_title</h3>
+                 
+                <br>
+                <span class="item_price">
+
+                    Rs @Model.p_price
+                </span>
+                
+                <p>@Model.p_description</p>
+                <ul >
+                    Size: @Html.DropDownList("s_id", string.Empty)
+             
+                
+                </ul>
+                <ul >
+                    Color: @Html.DropDownList("c_id", string.Empty)
+                    
+                </ul>
+                <div class="clearfix"> </div>
+                <br><br>
+                <div class="btn_form">
+                    <input type="submit" value="ADD TO CART"   class="add-cart item_add btn btn-success"  >
+                 
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        }
+        
+        <!--collapse-tabs-->
+        <div class="collpse tabs">
+            <div class="panel-group collpse" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default wow fadeInUp animated" data-wow-delay=".5s">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Description
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default wow fadeInUp animated" data-wow-delay=".6s">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                additional information
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default wow fadeInUp animated" data-wow-delay=".7s">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                reviews (5)
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default wow fadeInUp animated" data-wow-delay=".8s">
+                    <div class="panel-heading" role="tab" id="headingFour">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                help
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                        <div class="panel-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--//collapse -->
+        </div>
+    </div>
+

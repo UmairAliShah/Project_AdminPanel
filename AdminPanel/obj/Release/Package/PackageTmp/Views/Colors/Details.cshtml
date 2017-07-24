@@ -1,0 +1,34 @@
+﻿@model AdminPanel.Models.Table_Colors
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Table_Colors</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.c_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.c_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Table_Category.category_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Table_Category.category_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.c_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
